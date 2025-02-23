@@ -1,0 +1,120 @@
+body {
+    font-family: 'Roboto', sans-serif; /* Используем Roboto от Google Fonts */
+    background: linear-gradient(to bottom, #2980b9, #6dd5fa); /* Градиентный фон */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff; /* Белый цвет текста по умолчанию */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый фон */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Более выраженная тень */
+    padding: 40px;
+    width: 80%;
+    max-width: 700px; /* Немного увеличим максимальную ширину */
+    text-align: center;
+    color: #333; /* Цвет текста в контейнере */
+}
+
+header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ddd; /* Линия под заголовком */
+    padding-bottom: 15px;
+}
+
+h1 {
+    font-size: 3em; /* Увеличим размер заголовка */
+    font-weight: 700;
+    color: #2c3e50; /* Темный цвет для заголовка */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Тень для заголовка */
+}
+
+h2 {
+    font-size: 2em;
+    color: #34495e; /* Темный цвет для подзаголовка */
+    margin-bottom: 20px;
+}
+
+.buttons {
+    position: relative;
+    display: flex;
+    justify-content:space-between;
+    margin-top: 30px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    background-color: #3498db; /* Синий цвет для кнопки */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавный переход цвета фона */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для кнопки */
+}
+
+.button + .button{
+    margin-left: 10px;
+}
+ 
+button:hover {
+    background-color: #2980b9; /* Более темный синий цвет при наведении */
+}
+
+button:focus {
+    outline: 2px solid #007bff; /* Пример обводки */
+    outline-offset: 2px; /* Чтобы обводка не сливалась с кнопкой */
+}
+
+#congratulations img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Скруглим углы изображения */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Тень для изображения */
+    margin-top: 20px;
+}
+
+#congratulations p {
+    font-size: 1.3em;
+    line-height: 1.6; /* Увеличим межстрочный интервал */
+    margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    #question {
+        width: 90%; /* Увеличиваем ширину на телефонах */
+        max-width: 400px; /* Но не больше 400px */
+        height: auto; /* Автоматическая высота */
+        padding: 15px;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 18px;
+    }
+
+    #yesBtn {
+        bottom: 5px;
+        left: 5px;
+    }
+
+    #noBtn {
+        top: 5px;
+        right: 5px;
+    }
+}
+
+/* Media Query для экранов шириной до 480px (небольшие телефоны) */
+@media screen and (max-width: 480px) {
+    button {
+        font-size: 16px;
+    }
+}
