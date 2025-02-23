@@ -87,6 +87,27 @@ button:focus {
     margin-bottom: 20px;
 }
 
+#missedMessageContainer {
+    position: fixed; /* Фиксированное положение */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрирование */
+    background-color: rgba(255, 0, 0, 0.8); /* Красный полупрозрачный фон */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    z-index: 1000; /* Поверх всего */
+    opacity: 0; /* Изначально невидимый */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Анимация */
+    pointer-events: none; /* Не перехватывает клики */
+}
+
+#missedMessageContainer.show {
+    opacity: 1; /* Показываем сообщение */
+    transform: translate(-50%, -50%) scale(1.2); /* Увеличиваем размер */
+}
+
 
 @media screen and (max-width: 768px) {
     #question {
