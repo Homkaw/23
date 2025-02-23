@@ -8,7 +8,7 @@ yesBtn.addEventListener('click', () => {
     congratulationsSection.style.display = 'block';
 });
 
-function moveButton(event) { // Добавляем параметр event для получения координат курсора
+function moveButton(event) {
     const containerWidth = questionSection.offsetWidth;
     const buttonWidth = noBtn.offsetWidth;
     const containerHeight = questionSection.offsetHeight;
@@ -20,7 +20,6 @@ function moveButton(event) { // Добавляем параметр event для
     let randomX, randomY;
     let cursorX, cursorY;
 
-    // Получаем координаты курсора (или касания)
     if (event.type === 'mouseover') {
         cursorX = event.clientX - questionSection.offsetLeft;
         cursorY = event.clientY - questionSection.offsetTop;
@@ -29,7 +28,6 @@ function moveButton(event) { // Добавляем параметр event для
         cursorY = event.touches[0].clientY - questionSection.offsetTop;
     }
 
-    // Генерируем случайные координаты, пока они не будут достаточно далеко от курсора
     do {
         randomX = Math.floor(Math.random() * maxX);
         randomY = Math.floor(Math.random() * maxY);
@@ -46,12 +44,10 @@ function moveButton(event) { // Добавляем параметр event для
     noBtn.style.top = randomY + 'px';
 }
 
-// Функция для обработки наведения/касания
 function handleMove(event) {
-    moveButton(event); // Передаем объект event в moveButton
+    moveButton(event);
 }
 
-// Определяем, поддерживает ли устройство сенсорные касания
 function isTouchDevice() {
     return (('ontouchstart' in window) ||
            (navigator.maxTouchPoints > 0) ||
@@ -60,15 +56,35 @@ function isTouchDevice() {
 
 
 if (isTouchDevice()) {
-    // Для сенсорных устройств перемещаем кнопку при касании
     noBtn.addEventListener('touchstart', handleMove);
 } else {
-    // Для компьютеров перемещаем кнопку при наведении
     noBtn.addEventListener('mouseover', handleMove);
 }
 
+// Новая функция для отображения сообщения "Промах!"
+function showMissedMessage() {
+    // Создаем контейнер для сообщения
+    const messageContainer = document.createElement('div');
+    messageContainer.id = 'missedMessageContainer';
+    messageContainer.textContent = 'ХУЙ ТЕБЕ!';
 
+    // Добавляем контейнер в body
+    document.body.appendChild(messageContainer);
 
-noBtn.addEventListener('click', () => {
-    alert('Не уйдёшь!'); // Добавим сообщение при попытке нажать на убегающую кнопку
+    // Запускаем анимацию
+    messageContainer.classList.add('show');
+
+    // Удаляем сообщение через некоторое время
+    setTimeout(() => {
+        messageContainer.classList.remove('show'); // Запускаем анимацию исчезновения
+
+        setTimeout(() => {
+            document.body.removeChild(messageContainer); // Удаляем элемент
+        }, 300); // Ждем окончания анимации исчезновения
+    }, 1000); // Сообщение отображается в течение 1 секунды
+}
+
+noBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    showMissedMessage(); // Вызываем функцию для отображения сообщения
 });
